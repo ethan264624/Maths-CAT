@@ -173,6 +173,7 @@ def check_player_winning_condition(player, destination, imandiv_space): #code/fu
 
 
 
+
 def main_func(): 
 
     player1name = input("\nEnter Player 1's name: ")
@@ -227,16 +228,56 @@ def main_func():
         }
 
        def player_1_turn():
+               def player_1_turn():
                 print('\n' + player1_information ['Player 1 name'] + 's turn: ') #opens the player name part of the information dictionary
                 #It will end when one of the players reaches the end, and the "break" function excecutes at the end of the function
                 # Player 1's turn below
-                distance = input("\nPlayer 1: Enter distance to move on the plane: ")
                 distance = input('Enter distance to move on the plane: ')
-                direction = input("Player 1: Enter direction to move towards (1-8); if you enter a wrong number you'll loose your turn!: ")
-                player1_information['x'] += player_translation_on_da_plane[0] #The 'x' value, which was one set of coordinates updates
-                #based on the value the translation is equal to 
-                player1_information['y'] += player_translation_on_da_plane[1]
-                print('Player turn test done')
+                try : #tries to convert the input into a number
+                    #will only work if only a number was inputted into the input
+                    distancenum = int(distance)
+                except : #when it fails to convert it to a number, error message will show
+                    print('Please enter a number, nothing else :)')
+                    player_1_turn() #takes them back to the first question in the turn
+                else :
+                    
+                    def contin_player_1_turn() :
+                        #Asks for the distance to move, then converts it to an integer
+                        #Same thing is done with the direction, the function asks for the direction to move in and converts it to an integer
+                        direction = input("Player 1: Enter direction to move towards (1-8); if you enter a wrong number you'll loose your turn!: ")
+                        try : #basically the same as above
+                            directionnum = int(direction)
+                        except : #however, when you don't input a number you will be taken to the "enter direction" question
+                            print("ENTER A NUMBER PLEASE, NO LETTERS!")
+                            contin_player_1_turn()
+                        else :
+                        
+                            player_translation_on_da_plane = translate_da_player(distancenum, directionnum) #The translate function is called with paramaters in the brackets
+                            #This translate function returns a tuple representing movement and change in the x and y coordinates
+                            #Also determines the movement of the cartesian plane
+                            player1_information['x'] += player_translation_on_da_plane[0] #The 'x' value, which was one set of coordinates updates
+                            #based on the value the translation is equal to 
+                            player1_information['y'] += player_translation_on_da_plane[1]
+                            #Also updates the coordinates based on what was inputted above, by translation
+                            #The above two lines function as the following:
+                            #The x and y coordinates are updated based on the info from the translation func 
+                            print('Player 1 moved.')
+                            if IndexError is True : #this will accomodate the event where the inputted values are out of range
+                                print('Inputted value is out of range')
+                                contin_player_1_turn()
+                            else :
+                                display_player_information(player1_information, destination, distance)
+                                #displays new destination
+                                if check_player_winning_condition(player1_information, destination, imandiv_space):
+                                    #The check winner function, another imported function checks if all these conditions are met
+                                    #This utilises the Euclidean formula for distance, most commonly used in cartesian plane codes for movement
+                                    print("\nPlayer 1 wins! GGWP!")
+                                    exit() #exits game
+                        
+                    contin_player_1_turn()         
+            
+            player_1_turn()
+            
                           
                             
                                 
