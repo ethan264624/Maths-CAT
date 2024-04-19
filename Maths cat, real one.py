@@ -379,7 +379,7 @@ def main_function() : #main function, or the main game
 
                 newplayer3dest = translate_da_player(distance3, direction3) #translates the ai's random distance and direction
                 #the random distance and direction gets translated
-                #this determines the ai's new position
+                #this determines the ai's new position.
                 print('The AI is deciding where to move...')
                 time.sleep(2.45) #this command from the time dictionary makes the ai take 3 seconds to decide
                 #for cringe ig
