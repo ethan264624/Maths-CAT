@@ -133,6 +133,26 @@ triples_dictionary = [
 [555, 572, 797],
 ] #closes off the dictionary
 
+def translate_da_player(distance, player_direction): #translation function
+    
+    if  player_direction < 1 or player_direction > 8: #checks to see if its a valid integer
+      print('Direction must be an integer between 1 and 8. ') 
+      exit()
+          
+
+    
+    
+
+    # Find the closest Pythagorean triple
+    closest_pythagorean_triple = None #The code first assumes there is no nearby triple, equalling to none. The below function then finds the nearest triple
+    for triple in triples_dictionary: #this line of code scans through the pythagorean triple dictionary 
+        #it will stop finding a triple when the hypotenuse is greater or equal to the given distance to move
+        if triple[2] >= distance:
+            closest_pythagorean_triple = triple
+            break #ends this section when the nearest pythagorean triple is found 
+    
+    return[triple]
+
 def main_func(): 
 
     player1name = input("\nEnter Player 1's name: ")
@@ -186,24 +206,20 @@ def main_func():
                     'y': random.randint(-800, 800)
         }
 
-        def player_1_turn():
+       def player_1_turn():
                 print('\n' + player1_information ['Player 1 name'] + 's turn: ') #opens the player name part of the information dictionary
                 #It will end when one of the players reaches the end, and the "break" function excecutes at the end of the function
                 # Player 1's turn below
                 distance = input("\nPlayer 1: Enter distance to move on the plane: ")
+                distance = input('Enter distance to move on the plane: ')
                 direction = input("Player 1: Enter direction to move towards (1-8); if you enter a wrong number you'll loose your turn!: ")
-                     
-          
                 player1_information['x'] += player_translation_on_da_plane[0] #The 'x' value, which was one set of coordinates updates
                 #based on the value the translation is equal to 
                 player1_information['y'] += player_translation_on_da_plane[1]
-                print('Player 1 moved.')
-                print('Player 1 turn test done')
-                  
-                 
-                    #displays new destination
-                  
+                print('Player turn test done')
+                          
+                            
+                                
+                           
             
-              
-
-        player_1_turn()
+    player_1_turn()
