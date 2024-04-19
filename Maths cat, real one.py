@@ -163,3 +163,21 @@ def main_func():
             main_function()
         #The buffer will make it easier and less time consuming for players to reach the end point. 
         #Depending on the difficulty, the size of the buffer will either be higher or lower; lower being harder
+
+
+        #dictionaries with player information
+        player1_information = {'x': random.randint(-800, 800), 
+                                'y': random.randint(-800, 800),
+                                'Player 1 name' :  player1name, 
+                                'Personal space buffer size' : imandiv_space,
+                                'Difficulty' : le_player_difficulty
+        }
+        #Defines the x and y coordinates, using the randint function
+        #The integers in the brackets are the range of possible coordinates the players and the destination can be
+        #"Random" is a function imported from pythons random list of functions
+        player2_information = {'x': random.randint(-800, 800), #the format behind 'x' : (function) is so the coordinates can be called when 'x' is put into a line of code
+                                'y': random.randint(-800, 800),
+                                "Player 2's name" : player2name,
+                                'Personal space buffer size' : imandiv_space,
+                                'Difficulty' : le_player_difficulty
+                              }
