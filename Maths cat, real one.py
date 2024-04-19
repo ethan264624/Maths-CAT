@@ -159,7 +159,7 @@ def translate_da_player(distance, player_direction): #translation function
         a, b, c = closest_pythagorean_triple #This substitutes the pythagorean triples into a, b, and c (the hypotenuse)
         player_translations_dictionary = [
             (b,a), (a,b), (-a, b), (-b, a), (-b, -a), (-a, -b), (a, -b), (b, -a)
-        ] #
+        return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
 def main_func(): 
 
     player1name = input("\nEnter Player 1's name: ")
