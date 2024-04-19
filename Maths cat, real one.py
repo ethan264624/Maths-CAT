@@ -278,9 +278,44 @@ def main_func():
             
             player_1_turn()
             
-                          
+
+             
+            def player_2_turn():
+                print('\n' + player2_information ["Player 2's name"] + 's turn:') 
+                # Player 2's turn. The code for player 2 is more or less the same as player 1, so no notes have been given for it
+                distance = input("\nPlayer 2: Enter distance to move on the plane: ")
+                try :
+                    distancenum2 = int(distance)
+                except :
+                    print('please enter a number :)')
+                    player_2_turn()
+                else :
+                    
+                    
+                    def contin_player_2_turn() :
+                        direction = input("Player 2: Enter direction (1-8);  if you enter a wrong number you'll loose your turn: ")
+                        try :
+                            directionnum2 = int(direction)
+                        except :
+                            print('ENTER A NUMBER, WHY WOULDNT YOU!')
+                            contin_player_2_turn() 
+                        else :
+                            translation = translate_da_player(distancenum2, directionnum2)
+                            player2_information['x'] += translation[0]
+                            player2_information['y'] += translation[1]
+                            print("Player 2 moved.")
+
+                            display_player_information(player2_information, destination, distance)
+                            if check_player_winning_condition(player2_information, destination, imandiv_space):
+                                print("\nPlayer 2 wins! GGWP!")
+                                exit()
+                    contin_player_2_turn()
+                
+                
+            player_2_turn()
+
                             
                                 
                            
-            
-    player_1_turn()
+main_func()            
+    
