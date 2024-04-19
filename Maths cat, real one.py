@@ -160,6 +160,19 @@ def translate_da_player(distance, player_direction): #translation function
         player_translations_dictionary = [
             (b,a), (a,b), (-a, b), (-b, a), (-b, -a), (-a, -b), (a, -b), (b, -a)
         return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
+
+def check_player_winning_condition(player, destination, imandiv_space): #code/function to check winning condition
+    distance = math.sqrt((player['x'] - destination['x'])**2 + (player['y'] - destination['y'])**2) #player variables are the player's coordinate positions
+    #destination variables are the destination, split into the x and y coordinates
+    #bracketed equations caculate the distance between the player and the destination, conversely in x and y coordinate fashion
+    #the **2 squares the coordinates, then the + symbol completes the sum of squared differences
+    #math.sqrt is a function from the python math module that calculates the square root of the squared differences (aka a Euclidean distance)
+    if distance <= imandiv_space:
+        return True #if the distance of the player is less or equal to the buffer, 'TRUE' will be returned meaning the player reaching the destination is true
+    return False #function will return a false 
+
+
+
 def main_func(): 
 
     player1name = input("\nEnter Player 1's name: ")
