@@ -1,3 +1,7 @@
+import random #imports the "randint" function to employ a integer randomiser function
+import math #allows the"sqrt" feature to be used
+
+
 triples_dictionary = [
 [3, 4, 5],
 [5, 12, 13],
