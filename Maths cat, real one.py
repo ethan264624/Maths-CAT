@@ -314,7 +314,27 @@ def main_func():
                 
             player_2_turn()
 
-                            
+            def player_3_turn_ai() : #Player 3's turn, which is an ai
+            # Player 2's turn. The code for player 2 is more or less the same as player 1, so no notes have been given for it
+                print("\nAI's turn")
+                distance = random.randint(1, 5) 
+                direction = random.randint(1,2)
+                #the ai 3rd player chooses a random distance and direction
+                direction3 = direction 
+                distance3 = distance 
+
+                newplayer3dest = translate_da_player(distance3, direction3) #translates the ai's random distance and direction
+                #the random distance and direction gets translated
+                #this determines the ai's new position
+                print('The AI is deciding where to move...')
+                
+                print("The AI has decided where to move!")
+                print('AI location:', newplayer3dest)
+                print('Destination:' + "(" + str(destination['x']) + ', ' + str(destination['y'] ) + ")") #shows the destination incase the players forgot (i guess)
+                
+    
+            
+            player_3_turn_ai()                    
                                 
                            
 main_func()            
