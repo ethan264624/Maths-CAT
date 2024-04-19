@@ -276,7 +276,7 @@ def main_function() : #main function, or the main game
                 print('\n' + player1_information ['Player 1 name'] + 's turn: ') #opens the player name part of the information dictionary
                 #It will end when one of the players reaches the end, and the "break" function excecutes at the end of the function
                 # Player 1's turn below
-                distance = input('Enter distance to move on the plane: ')
+                distance = input("\nPlayer 1: Enter distance to move on the plane: ")
                 try : #tries to convert the input into a number
                     #will only work if only a number was inputted into the input
                     distancenum = int(distance)
@@ -379,7 +379,7 @@ def main_function() : #main function, or the main game
 
                 newplayer3dest = translate_da_player(distance3, direction3) #translates the ai's random distance and direction
                 #the random distance and direction gets translated
-                #this determines the ai's new position.
+                #this determines the ai's new position
                 print('The AI is deciding where to move...')
                 time.sleep(2.45) #this command from the time dictionary makes the ai take 3 seconds to decide
                 #for cringe ig
@@ -434,4 +434,7 @@ def main_function() : #main function, or the main game
     
 
 main_function()
+
+
+
 
