@@ -156,10 +156,14 @@ def translate_da_player(distance, player_direction): #translation function
         exit()#if there is no suitible triple closeby, this value error will pop up
     # Calculate the translation based on the direction
     else :
+        if IndexError is True :
+            print('Index error')
+            main_func()
         a, b, c = closest_pythagorean_triple #This substitutes the pythagorean triples into a, b, and c (the hypotenuse)
         player_translations_dictionary = [
             (b,a), (a,b), (-a, b), (-b, a), (-b, -a), (-a, -b), (a, -b), (b, -a)
         return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
+
 
 def check_player_winning_condition(player, destination, imandiv_space): #code/function to check winning condition
     distance = math.sqrt((player['x'] - destination['x'])**2 + (player['y'] - destination['y'])**2) #player variables are the player's coordinate positions
