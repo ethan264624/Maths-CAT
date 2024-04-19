@@ -185,3 +185,25 @@ def main_func():
         destination = {'x': random.randint(-800, 800), 
                     'y': random.randint(-800, 800)
         }
+
+        def player_1_turn():
+                print('\n' + player1_information ['Player 1 name'] + 's turn: ') #opens the player name part of the information dictionary
+                #It will end when one of the players reaches the end, and the "break" function excecutes at the end of the function
+                # Player 1's turn below
+                distance = input("\nPlayer 1: Enter distance to move on the plane: ")
+                direction = input("Player 1: Enter direction to move towards (1-8); if you enter a wrong number you'll loose your turn!: ")
+                     
+          
+                player1_information['x'] += player_translation_on_da_plane[0] #The 'x' value, which was one set of coordinates updates
+                #based on the value the translation is equal to 
+                player1_information['y'] += player_translation_on_da_plane[1]
+                print('Player 1 moved.')
+                print('Player 1 turn test done')
+                  
+                 
+                    #displays new destination
+                  
+            
+              
+
+        player_1_turn()
