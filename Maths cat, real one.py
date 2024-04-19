@@ -151,8 +151,15 @@ def translate_da_player(distance, player_direction): #translation function
             closest_pythagorean_triple = triple
             break #ends this section when the nearest pythagorean triple is found 
     
-    return[triple]
-
+    if closest_pythagorean_triple is None : #if there is still no closest triple found
+        print('No suitable triple found (placeholder probs)')
+        exit()#if there is no suitible triple closeby, this value error will pop up
+    # Calculate the translation based on the direction
+    else :
+        a, b, c = closest_pythagorean_triple #This substitutes the pythagorean triples into a, b, and c (the hypotenuse)
+        player_translations_dictionary = [
+            (b,a), (a,b), (-a, b), (-b, a), (-b, -a), (-a, -b), (a, -b), (b, -a)
+        ] #
 def main_func(): 
 
     player1name = input("\nEnter Player 1's name: ")
