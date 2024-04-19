@@ -175,7 +175,10 @@ def check_player_winning_condition(player, destination, imandiv_space): #code/fu
         return True #if the distance of the player is less or equal to the buffer, 'TRUE' will be returned meaning the player reaching the destination is true
     return False #function will return a false 
 
-
+def display_player_information(player, destination, distance): #player information function; allows for player position and destination to be displayed
+    print(f"Player Location on the Plane: ({player['x']}, {player['y']})") #This retrieves the x and y coordinates of the player
+    print(f"Destination: ({destination['x']}, {destination['y']})") #In  a similar fashion, this accesses the x and y coordinates of the desto, using a f-string to print in the format of (x,y)
+    print(f"Distance from Destination: ({player['x'] - destination['x']}, {player['y'] - destination['y']})") #calculates distance from the player destination
 
 
 def main_func(): 
