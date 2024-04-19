@@ -181,3 +181,7 @@ def main_func():
                                 'Personal space buffer size' : imandiv_space,
                                 'Difficulty' : le_player_difficulty
                               }
+        #player 3 info; yes, even the ai has info!
+        destination = {'x': random.randint(-800, 800), 
+                    'y': random.randint(-800, 800)
+        }
