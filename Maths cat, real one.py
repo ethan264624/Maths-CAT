@@ -132,3 +132,34 @@ triples_dictionary = [
 [168, 775, 793],
 [555, 572, 797],
 ] #closes off the dictionary
+
+def main_func(): 
+
+    player1name = input("\nEnter Player 1's name: ")
+    player2name = input("Enter Player 2's name: ")
+    
+    
+        
+    
+
+    
+    
+    menu = input('\nEnter 1 to start the game, and enter anything else for instructions (IMPORTANT TO READ): ') #option to see the instructions in the code
+    
+    
+    if menu == "1" : 
+
+    
+        #starts the game if the input is 1, and takes the users to the difficulty selection
+        le_player_difficulty = input('\nDifficulty selection: Easy, Medium, Hard? ')
+        if le_player_difficulty == "Easy" :
+            imandiv_space = 100 #imandiv space is the buffer (sry imandiv)
+        elif le_player_difficulty == "Medium" :
+            imandiv_space = 50
+        elif le_player_difficulty == "Hard" :
+            imandiv_space = 10 #THE BUFFER IS 10 ONG PLZZZZ
+        else :
+            print('Please select a valid option :D')
+            main_function()
+        #The buffer will make it easier and less time consuming for players to reach the end point. 
+        #Depending on the difficulty, the size of the buffer will either be higher or lower; lower being harder
