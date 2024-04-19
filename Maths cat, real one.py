@@ -1,7 +1,18 @@
+#Yr 8 Semester 1 CAT investigation (15% of yearly mark)
+#FIRST ITERATION
+
 import random #imports the "randint" function to employ a integer randomiser function
 import math #allows the"sqrt" feature to be used
+import time #allows for the .sleep
+
+print('Welcome to the pythagorean triples movement game!')
+time.sleep(1)
+print('Loading game...')
+time.sleep(1.75)
+print('Done!')
 
 
+# List of Pythagorean triples stored in a dictionary
 triples_dictionary = [
 [3, 4, 5],
 [5, 12, 13],
@@ -136,7 +147,7 @@ triples_dictionary = [
 def translate_da_player(distance, player_direction): #translation function
     
     if  player_direction < 1 or player_direction > 8: #checks to see if its a valid integer
-      print('Direction must be an integer between 1 and 8. ') 
+      print('Direction must be an integer between 1 and 8. Player who didnt have that turn wins!') 
       exit()
           
 
@@ -150,20 +161,24 @@ def translate_da_player(distance, player_direction): #translation function
         if triple[2] >= distance:
             closest_pythagorean_triple = triple
             break #ends this section when the nearest pythagorean triple is found 
-    
+
     if closest_pythagorean_triple is None : #if there is still no closest triple found
-        print('No suitable triple found (placeholder probs)')
+        print('No suitable triple found, the other player WINS!')
         exit()#if there is no suitible triple closeby, this value error will pop up
     # Calculate the translation based on the direction
     else :
-        if IndexError is True :
-            print('Index error')
-            main_func()
         a, b, c = closest_pythagorean_triple #This substitutes the pythagorean triples into a, b, and c (the hypotenuse)
         player_translations_dictionary = [
             (b,a), (a,b), (-a, b), (-b, a), (-b, -a), (-a, -b), (a, -b), (b, -a)
-        return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
+        ] #This is a list of translations. The list of translations is based off the closest pythagorean triple
+        #Translations list/dictionary contains tuples of x and y coordinates, representing 8 different methods of movement
+        #EDIT: THX NEEL AND ALVIN FOR HELPING ME SOLVE THE ISSUES WITH THE TRANSLATIONS!!!
+    
+    if IndexError is True :
+        return "Index Error"
+    else :
 
+        return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
 
 def check_player_winning_condition(player, destination, imandiv_space): #code/function to check winning condition
     distance = math.sqrt((player['x'] - destination['x'])**2 + (player['y'] - destination['y'])**2) #player variables are the player's coordinate positions
@@ -179,10 +194,11 @@ def display_player_information(player, destination, distance): #player informati
     print(f"Player Location on the Plane: ({player['x']}, {player['y']})") #This retrieves the x and y coordinates of the player
     print(f"Destination: ({destination['x']}, {destination['y']})") #In  a similar fashion, this accesses the x and y coordinates of the desto, using a f-string to print in the format of (x,y)
     print(f"Distance from Destination: ({player['x'] - destination['x']}, {player['y'] - destination['y']})") #calculates distance from the player destination
+    
 
-
-def main_func(): 
-
+def main_function() : #main function, or the main game
+    
+    
     player1name = input("\nEnter Player 1's name: ")
     player2name = input("Enter Player 2's name: ")
     
@@ -211,8 +227,7 @@ def main_func():
             main_function()
         #The buffer will make it easier and less time consuming for players to reach the end point. 
         #Depending on the difficulty, the size of the buffer will either be higher or lower; lower being harder
-
-
+        
         #dictionaries with player information
         player1_information = {'x': random.randint(-800, 800), 
                                 'y': random.randint(-800, 800),
@@ -228,14 +243,36 @@ def main_func():
                                 "Player 2's name" : player2name,
                                 'Personal space buffer size' : imandiv_space,
                                 'Difficulty' : le_player_difficulty
-                              }
+                                
+        }                        
+        #player 2 information on coordinates
+        AI_coordinates = {'x' : random.randint(-800, 800), 
+                        'y' : random.randint(-800, 800)
+        }
         #player 3 info; yes, even the ai has info!
         destination = {'x': random.randint(-800, 800), 
                     'y': random.randint(-800, 800)
         }
+        #These lines of code make 'x' equal a certain integer, same wtih the y
 
-       def player_1_turn():
-               def player_1_turn():
+        
+        
+        
+        
+        
+        
+        print('\nLoading player summary...')
+        time.sleep(1.5)
+        print('\nPLAYER SUMMARY (DOUBLE CHECK EVERYTHING IS RIGHT BEFORE PLAYING!)')
+        print(f"Player 1's starting coordinates: (" + str(player1_information['x']) + (' , ') + str(player1_information['y']) + ")")
+        print(f"Player 2's starting coordinates: (" + str(player2_information['x']) + (' , ') + str(player2_information['y']) + ")")
+        print(f"The AI's starting coordinates:(" +  str(AI_coordinates['x']) + (' , ') + str(AI_coordinates['y']) + ")")
+        print(f"\nTheir goal is:(" + str(destination['x']) + (' , ') + str(AI_coordinates['y']) + ")")
+
+        time.sleep(1.75)
+    
+        while True: #While true puts the game into an infinite loop
+            def player_1_turn():
                 print('\n' + player1_information ['Player 1 name'] + 's turn: ') #opens the player name part of the information dictionary
                 #It will end when one of the players reaches the end, and the "break" function excecutes at the end of the function
                 # Player 1's turn below
@@ -269,20 +306,27 @@ def main_func():
                             #The above two lines function as the following:
                             #The x and y coordinates are updated based on the info from the translation func 
                             print('Player 1 moved.')
-                            display_player_information(player1_information, destination, distance)
-                            #displays new destination
-                            if check_player_winning_condition(player1_information, destination, imandiv_space):
-                                #The check winner function, another imported function checks if all these conditions are met
-                                #This utilises the Euclidean formula for distance, most commonly used in cartesian plane codes for movement
-                                print("\nPlayer 1 wins! GGWP!")
-                                exit() #exits game
+                            if IndexError is True : #this will accomodate the event where the inputted values are out of range
+                                print('Inputted value is out of range')
+                                contin_player_1_turn()
+                            else :
+                                display_player_information(player1_information, destination, distance)
+                                print('\nProcessing code...')
+                                time.sleep(1.5)
+                                #displays new destination
+                                if check_player_winning_condition(player1_information, destination, imandiv_space):
+                                    #The check winner function, another imported function checks if all these conditions are met
+                                    #This utilises the Euclidean formula for distance, most commonly used in cartesian plane codes for movement
+                                    print("\nPlayer 1 wins! GGWP!")
+                                    exit() #exits game
                         
                     contin_player_1_turn()         
             
             player_1_turn()
             
-
-             
+            
+            
+            
             def player_2_turn():
                 print('\n' + player2_information ["Player 2's name"] + 's turn:') 
                 # Player 2's turn. The code for player 2 is more or less the same as player 1, so no notes have been given for it
@@ -307,15 +351,22 @@ def main_func():
                             player2_information['x'] += translation[0]
                             player2_information['y'] += translation[1]
                             print("Player 2 moved.")
-
-                            display_player_information(player2_information, destination, distance)
-                            if check_player_winning_condition(player2_information, destination, imandiv_space):
-                                print("\nPlayer 2 wins! GGWP!")
-                                exit()
+                            if IndexError is True :
+                                print('Inputted values is out of range.')
+                                contin_player_2_turn()
+                            else :
+                                display_player_information(player2_information, destination, distance)
+                                print('\nProcessing code...')
+                                time.sleep(2.5)
+                                if check_player_winning_condition(player2_information, destination, imandiv_space):
+                                    print("\nPlayer 2 wins! GGWP!")
+                                    exit()
                     contin_player_2_turn()
                 
                 
             player_2_turn()
+
+
 
             def player_3_turn_ai() : #Player 3's turn, which is an ai
             # Player 2's turn. The code for player 2 is more or less the same as player 1, so no notes have been given for it
@@ -330,46 +381,57 @@ def main_func():
                 #the random distance and direction gets translated
                 #this determines the ai's new position
                 print('The AI is deciding where to move...')
-                
+                time.sleep(2.45) #this command from the time dictionary makes the ai take 3 seconds to decide
+                #for cringe ig
                 print("The AI has decided where to move!")
                 print('AI location:', newplayer3dest)
                 print('Destination:' + "(" + str(destination['x']) + ', ' + str(destination['y'] ) + ")") #shows the destination incase the players forgot (i guess)
-                
+                if IndexError is True : #if the ai chooses a value out of range, it will skip to player 1's turn
+                    print('Index error from the ai, it has a skill issue lol')
+                    player_1_turn()
+                time.sleep(1.5)
     
             
-            player_3_turn_ai()                    
-                                
-  else: #displays instructions
-    #NOte: \n is used in the writing to skip a line, making it clearer to read
-    print('\nBASIC GAME INSTRUCTIONS')
-    print('2  players will be placed randomly on an imaginary cartiesian plane. ')
-    print('You will take turns moving towards your destination, by entering the amount of units and direction to move')
-    print('The player that reaches the end destination first wins!')
-    print('You are able to select the difficulty of the game, which changes the space buffer')
-    print('The player will lose if their inputted distance are not within a nearby triple, so play it safe!')
-    print('\nPERSONAL SPACE BUFFER')
-    print('The space buffer is a certain radius around the destination point (in units)')
-    print('It acts as a general area where the function deems the player to have reached the destination')
-    print('Easy = 100 units; Medium = 50 units; Hard = 15')
-    print('\nMOVING IN DIFFERENT DIRECTIONS')
-    print('Direction numbers are a result of dividing a sector of a cartesian plane diagonally in two')
-    print('For example, moving in direction 1 is from 0 to 45 degrees, 2 is 45 to 90 degrees, up until direction 8 from 315-360 degrees')
-    print('\nERROR INPUTS')
-    print("If you do not enter a whole integer in either the direction or distance to move inputs, you'll simply be asked again")
-    print('When there is a case where no nearby pythagorean triple nearby, the game will end')
-    print('The aim is to be as close to a pythagorean triple as possible')
-    print('\nAI')
-    print('The player 3 is run by an ai')
-    print('It will move to random spots, choosing a random direction and distance')
-    print('Imagine if the ai beats you...')
-    return_menu = input('\nEnter 1 to return to the menu, and enter anything else to quit: ') #asks user to return or quit
+            player_3_turn_ai()
+        
+    
+    else: #displays instructions
+        #NOte: \n is used in the writing to skip a line, making it clearer to read
+        print('\nBASIC GAME INSTRUCTIONS')
+        print('2  players will be placed randomly on an imaginary cartiesian plane. ')
+        print('You will take turns moving towards your destination, by entering the amount of units and direction to move')
+        print('The player that reaches the end destination first wins!')
+        print('You are able to select the difficulty of the game, which changes the space buffer')
+        print('The player will lose if their inputted distance are not within a nearby triple, so play it safe!')
+        print('\nPERSONAL SPACE BUFFER')
+        print('The space buffer is a certain radius around the destination point (in units)')
+        print('It acts as a general area where the function deems the player to have reached the destination')
+        print('Easy = 100 units; Medium = 50 units; Hard = 15')
+        print('\nMOVING IN DIFFERENT DIRECTIONS')
+        print('Direction numbers are a result of dividing a sector of a cartesian plane diagonally in two')
+        print('For example, moving in direction 1 is from 0 to 45 degrees, 2 is 45 to 90 degrees, up until direction 8 from 315-360 degrees')
+        print('\nERROR INPUTS')
+        print("If you do not enter a whole integer in either the direction or distance to move inputs, you'll simply be asked again")
+        print('When there is a case where no nearby pythagorean triple nearby, the game will end')
+        print('The aim is to be as close to a pythagorean triple as possible')
+        print('\nAI')
+        print('The player 3 is run by an ai')
+        print('It will move to random spots, choosing a random direction and distance')
+        print('Imagine if the ai beats you...')
+        return_menu = input('\nEnter 1 to return to the menu, and enter anything else to quit: ') #asks user to return or quit
 
-    if return_menu == "1" :
-        print('\nINTIALISING MENU...') #some text here just for fun 🥰
-        main_function() #brings the user back to the game
+        if return_menu == "1" :
+            print('\nINTIALISING MENU...') #some text here just for fun 🥰
+            time.sleep(2.5)
+            main_function() #brings the user back to the game
+        
+        else :
+            print('Bye')
+            exit() #exit function
+        
     
-    else :
-        print('Bye')
-            exit() #exit function               
-main_func()            
+
     
+
+main_function()
+
