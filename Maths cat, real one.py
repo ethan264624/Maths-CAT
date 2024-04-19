@@ -336,6 +336,37 @@ def main_func():
             
             player_3_turn_ai()                    
                                 
-                           
+  else: #displays instructions
+    #NOte: \n is used in the writing to skip a line, making it clearer to read
+    print('\nBASIC GAME INSTRUCTIONS')
+    print('2  players will be placed randomly on an imaginary cartiesian plane. ')
+    print('You will take turns moving towards your destination, by entering the amount of units and direction to move')
+    print('The player that reaches the end destination first wins!')
+    print('You are able to select the difficulty of the game, which changes the space buffer')
+    print('The player will lose if their inputted distance are not within a nearby triple, so play it safe!')
+    print('\nPERSONAL SPACE BUFFER')
+    print('The space buffer is a certain radius around the destination point (in units)')
+    print('It acts as a general area where the function deems the player to have reached the destination')
+    print('Easy = 100 units; Medium = 50 units; Hard = 15')
+    print('\nMOVING IN DIFFERENT DIRECTIONS')
+    print('Direction numbers are a result of dividing a sector of a cartesian plane diagonally in two')
+    print('For example, moving in direction 1 is from 0 to 45 degrees, 2 is 45 to 90 degrees, up until direction 8 from 315-360 degrees')
+    print('\nERROR INPUTS')
+    print("If you do not enter a whole integer in either the direction or distance to move inputs, you'll simply be asked again")
+    print('When there is a case where no nearby pythagorean triple nearby, the game will end')
+    print('The aim is to be as close to a pythagorean triple as possible')
+    print('\nAI')
+    print('The player 3 is run by an ai')
+    print('It will move to random spots, choosing a random direction and distance')
+    print('Imagine if the ai beats you...')
+    return_menu = input('\nEnter 1 to return to the menu, and enter anything else to quit: ') #asks user to return or quit
+
+    if return_menu == "1" :
+        print('\nINTIALISING MENU...') #some text here just for fun 🥰
+        main_function() #brings the user back to the game
+    
+    else :
+        print('Bye')
+            exit() #exit function               
 main_func()            
     
