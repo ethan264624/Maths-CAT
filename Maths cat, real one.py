@@ -386,14 +386,29 @@ def main_function() : #main function, or the main game
                    else:
                         # Calculates the gradient using the formula: (change in y) / (change in x) or rise/run
                         return (y2 - y1) / (x2 - x1)
-                x1, y1 = destination['x'], player1_information['y'] #x1 substitues the x coordinate of the destination, and y1 substitues the y coordinate of player 1
-                x2, y2 = player1_information['x'], destination['y'] #same here
+                x1, y1 = player1_information['x'], destination['y'] #x1 substitues the x coordinate of the destination, and y1 substitues the y coordinate of player 1
+                x2, y2 = destination['x'], player1_information['y'] #same here
                 gradient = calculate_player1_gradient(x1, y1, x2, y2)
                 if gradient is not None: #if the gradient "is not None" is basically if the gradient isnt a straight line
                     print("The gradient between player 1 ({}, {}) and the destination ({}, {}) is: {}".format(x1, y1, x2, y2, gradient))
                 else: #.format replaces the empty brackets with the integers and the gradient value
                     print("The coordinates ({}, {}) and ({}, {}) form a vertical line, so there is an undefined gradient.".format(x1, y1, x2, y2))
                     #shows when the gradient formed is a straight line
+                
+                #same as the above, just for player 2
+                def calculate_player2_gradient(x1, y1, x2, y2):
+                   if x1 == x2:
+                      return None
+                   else:
+                        return (y2 - y1) / (x2 - x1)
+                x1, y1 = player2_information['x'], destination['y'] 
+                x2, y2 = destination['x'], player2_information['y']
+                gradient = calculate_player2_gradient(x1, y1, x2, y2)
+                if gradient is not None: 
+                    print("The gradient between player 2 ({}, {}) and the destination ({}, {}) is: {}".format(x1, y1, x2, y2, gradient))
+                else: 
+                    print("The coordinates ({}, {}) and ({}, {}) form a vertical line, so there is an undefined gradient.".format(x1, y1, x2, y2))
+                    
                 
              
                 time.sleep(1.5)
