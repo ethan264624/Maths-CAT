@@ -151,7 +151,7 @@ def translate_da_player(distance, player_direction): #translation function
       exit()
           
 
-    
+    player_direction -= 1
     
 
     # Find the closest Pythagorean triple
@@ -174,10 +174,7 @@ def translate_da_player(distance, player_direction): #translation function
         #Translations list/dictionary contains tuples of x and y coordinates, representing 8 different methods of movement
         #EDIT: THX NEEL AND ALVIN FOR HELPING ME SOLVE THE ISSUES WITH THE TRANSLATIONS!!!
     
-    if IndexError is True :
-        return "Index Error"
-    else :
-
+  
         return player_translations_dictionary[player_direction] #returns the translation corresponding to the given direction. It is based from the translations list
 
 def check_player_winning_condition(player, destination, imandiv_space): #code/function to check winning condition
