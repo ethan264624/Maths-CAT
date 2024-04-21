@@ -379,11 +379,23 @@ def main_function() : #main function, or the main game
                 midpoint_x = ((player1_information['x'] + (player2_information['x'])) / 2)
                 midpoint_y = ((player1_information['y'] + (player2_information['y'])) / 2) #calculates the midpont between the 2 players
                 print('Current midpoint between the 2 players',"(" + str(midpoint_x) + ', ' + str(midpoint_y) + ")")
-                gradient_y_player1 = (((destination['y']**2) - player1_information['y']))
-                gradient_x_player1 = (((destination['x']**2) - player1_information['x']))
-                player1_gradient = (gradient_y_player1/gradient_x_player1)
-                print("\nPlayer 1's gradient to the destination:", player1_gradient)
-                #converts the midpoint to a string so it can be printed
+                def calculate_player1_gradient(x1, y1, x2, y2):
+                   if x1 == x2:
+                      # If the x-coordinates are the same, return None (vertical line)
+                      return None
+                   else:
+                        # Calculates the gradient using the formula: (change in y) / (change in x) or rise/run
+                        return (y2 - y1) / (x2 - x1)
+                x1, y1 = destination['x'], player1_information['y'] #x1 substitues the x coordinate of the destination, and y1 substitues the y coordinate of player 1
+                x2, y2 = player1_information['x'], destination['y'] #same here
+                gradient = calculate_player1_gradient(x1, y1, x2, y2)
+                if gradient is not None: #if the gradient "is not None" is basically if the gradient isnt a straight line
+                    print("The gradient between player 1 ({}, {}) and the destination ({}, {}) is: {}".format(x1, y1, x2, y2, gradient))
+                else: #.format replaces the empty brackets with the integers and the gradient value
+                    print("The coordinates ({}, {}) and ({}, {}) form a vertical line, so there is an undefined gradient.".format(x1, y1, x2, y2))
+                    #shows when the gradient formed is a straight line
+                
+             
                 time.sleep(1.5)
     
             
