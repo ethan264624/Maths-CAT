@@ -379,6 +379,10 @@ def main_function() : #main function, or the main game
                 midpoint_x = ((player1_information['x'] + (player2_information['x'])) / 2)
                 midpoint_y = ((player1_information['y'] + (player2_information['y'])) / 2) #calculates the midpont between the 2 players
                 print('Current midpoint between the 2 players',"(" + str(midpoint_x) + ', ' + str(midpoint_y) + ")")
+                gradient_y_player1 = (((destination['y']**2) - player1_information['y']))
+                gradient_x_player1 = (((destination['x']**2) - player1_information['x']))
+                player1_gradient = (gradient_y_player1/gradient_x_player1)
+                print("\nPlayer 1's gradient to the destination:", player1_gradient)
                 #converts the midpoint to a string so it can be printed
                 time.sleep(1.5)
     
