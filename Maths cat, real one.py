@@ -303,19 +303,15 @@ def main_function() : #main function, or the main game
                             #The above two lines function as the following:
                             #The x and y coordinates are updated based on the info from the translation func 
                             print('Player 1 moved.')
-                            if IndexError is True : #this will accomodate the event where the inputted values are out of range
-                                print('Inputted value is out of range')
-                                contin_player_1_turn()
-                            else :
-                                display_player_information(player1_information, destination, distance)
-                                print('\nProcessing code...')
-                                time.sleep(1.5)
-                                #displays new destination
-                                if check_player_winning_condition(player1_information, destination, imandiv_space):
-                                    #The check winner function, another imported function checks if all these conditions are met
-                                    #This utilises the Euclidean formula for distance, most commonly used in cartesian plane codes for movement
-                                    print("\nPlayer 1 wins! GGWP!")
-                                    exit() #exits game
+                            display_player_information(player1_information, destination, distance)
+                            print('\nProcessing code...')
+                            time.sleep(1.5)
+                            #displays new destination
+                            if check_player_winning_condition(player1_information, destination, imandiv_space):
+                                #The check winner function, another imported function checks if all these conditions are met
+                                #This utilises the Euclidean formula for distance, most commonly used in cartesian plane codes for movement
+                                print("\nPlayer 1 wins! GGWP!")
+                                exit() #exits game
                         
                     contin_player_1_turn()         
             
