@@ -348,16 +348,13 @@ def main_function() : #main function, or the main game
                             player2_information['x'] += translation[0]
                             player2_information['y'] += translation[1]
                             print("Player 2 moved.")
-                            if IndexError is True :
-                                print('Inputted values is out of range.')
-                                contin_player_2_turn()
-                            else :
-                                display_player_information(player2_information, destination, distance)
-                                print('\nProcessing code...')
-                                time.sleep(2.5)
-                                if check_player_winning_condition(player2_information, destination, imandiv_space):
-                                    print("\nPlayer 2 wins! GGWP!")
-                                    exit()
+                           
+                            display_player_information(player2_information, destination, distance)
+                            print('\nProcessing code...')
+                            time.sleep(2.5)
+                            if check_player_winning_condition(player2_information, destination, imandiv_space):
+                                print("\nPlayer 2 wins! GGWP!")
+                                exit()
                     contin_player_2_turn()
                 
                 
@@ -383,9 +380,10 @@ def main_function() : #main function, or the main game
                 print("The AI has decided where to move!")
                 print('AI location:', newplayer3dest)
                 print('Destination:' + "(" + str(destination['x']) + ', ' + str(destination['y'] ) + ")") #shows the destination incase the players forgot (i guess)
-                if IndexError is True : #if the ai chooses a value out of range, it will skip to player 1's turn
-                    print('Index error from the ai, it has a skill issue lol')
-                    player_1_turn()
+                midpoint_x = ((player1_information['x'] + (player2_information['x'])) / 2)
+                midpoint_y = ((player1_information['y'] + (player2_information['y'])) / 2) #calculates the midpont between the 2 players
+                print('Current midpoint between the 2 players',"(" + str(midpoint_x) + ', ' + str(midpoint_y) + ")")
+                #converts the midpoint to a string so it can be printed
                 time.sleep(1.5)
     
             
