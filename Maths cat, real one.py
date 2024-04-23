@@ -315,7 +315,7 @@ def main_function() : #main function, or the main game
                             x2, y2 = destination['x'], player1_information['y'] #same here
                             gradient = calculate_player1_gradient(x1, y1, x2, y2)
                             if gradient is not None: #if the gradient "is not None" is basically if the gradient isnt a straight line
-                                print("The gradient between player 1 ({}, {}) and the destination ({}, {}) is: {}".format(x1, player1_information['y'], x2, destination['y'], gradient))
+                                print("The gradient between player 1 ({}, {}) and the destination ({}, {}) is: {}".format(x1, player1_information['y'], x2, destination['y'], round(gradient,2)))
                             else: #.format replaces the empty brackets with the integers and the gradient value
                                 print("The coordinates ({}, {}) and ({}, {}) form a vertical line, so there is an undefined gradient.".format(x1, y1, x2, destination['y']))
                                 #shows when the gradient formed is a straight line
@@ -370,7 +370,7 @@ def main_function() : #main function, or the main game
                             x2, y2 = destination['x'], player2_information['y']
                             gradient = calculate_player2_gradient(x1, y1, x2, y2)
                             if gradient is not None: 
-                                print("The gradient between player 2 ({}, {}) and the destination ({}, {}) is: {}".format(x1, player2_information['y'], x2, destination['y'], gradient))
+                                print("The gradient between player 2 ({}, {}) and the destination ({}, {}) is: {}".format(x1, player2_information['y'], x2, destination['y'], round(gradient,2)))
                             else: 
                                 print("The coordinates ({}, {}) and ({}, {}) form a vertical line, so there is an undefined gradient.".format(x1, y1, x2, destination['y']))
                             print('\nProcessing code...')
